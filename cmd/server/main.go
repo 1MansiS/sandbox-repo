@@ -1,17 +1,14 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
+
+	"sandbox-repo/internal/handlers"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello, World!")
-}
-
 func main() {
-	http.HandleFunc("/", helloHandler)
+	http.HandleFunc("/", handlers.Hello)
 	log.Println("listening on :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
